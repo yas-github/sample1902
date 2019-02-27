@@ -1,3 +1,13 @@
 <h1>BookMark application.</h1>
 <p>ブックマークを管理するアプリ。</p>
-<p><%= link_to 'Sign up', signup_path %> or <a href="#">Sign in</a>.</p>
+
+<% if logged_in? %>
+  <p>ログイン中のユーザー：<%= current_user.name %></p>
+  <div>
+    <%= link_to 'ユーザー一覧ページへ', users_path %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to 'ユーザー登録', signup_path %> or <%= link_to 'ログイン', login_path %>.</p>
+  </div>
+<% end %>

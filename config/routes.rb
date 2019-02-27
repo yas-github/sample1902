@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'users', to: 'users#index'
-  get 'user', to: 'users#show'
-  get 'users/:id', to: 'users#show'
-  get 'users/:id/edit', to: 'users#edit'
 
   root to: 'tops#index'
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
   get 'signup', to:'users#new'
-  resource :users
+  resources :users
 end

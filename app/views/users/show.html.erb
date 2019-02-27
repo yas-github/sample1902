@@ -1,8 +1,17 @@
-<h1><%= @user.name %>のブックマークリスト</h1>
-<small><%= link_to 'ユーザー情報の編集', @user_edit %></small>
+<h1><%= @user.name %>の詳細ページ</h1>
+
+<% if current_user.id == @user.id %>
+  <div><%= link_to 'ユーザー情報の編集', edit_user_path(@user) %></div>
+  </div><%= link_to 'ログアウト', logout_path, method: :delete %></div>
+
+<% end %>
 
 <h2><%= @user.name %>のブックマーク</h2>
+
 
 <ul>
   <li>title:URL</li>
 </ul>
+
+<%= link_to 'ユーザー一覧ページへ', users_path %>
+<footer><small><%= link_to 'トップページへ', root_url %></small></footer>

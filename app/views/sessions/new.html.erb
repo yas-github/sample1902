@@ -1,0 +1,17 @@
+<h1>ログインページ</h1>
+<%= form_for(:session) do |f| %>
+
+  <div>
+    <%= f.label :email, 'Email' %>
+    <%= f.email_field :email %>
+  </div>
+  
+  <div>  
+    <%= f.label :password, 'Password' %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit 'ログイン' %>
+<% end %>
+
+<footer><small><%= link_to 'トップページへ', root_url %></small></footer>

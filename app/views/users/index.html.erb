@@ -1,6 +1,8 @@
 <h1>ユーザー一覧</h1>
+<p>ログイン中のユーザー：<%= current_user.name %></p>
+<small><%= link_to 'ログアウト', logout_path, method: :delete %></small>
 <ul>
   <% @users.each do |user| %>
-    <li><%= link_to user.id, user %>：<%= user.name %></li>
+    <li><%= link_to user.id, user_path(user) %>：<%= user.name %></li>
   <% end %>
 </ul>
