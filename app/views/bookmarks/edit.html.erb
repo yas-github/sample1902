@@ -1,6 +1,6 @@
-<%= @bookmarkの編集ページ %>
+<h1><%= @bookmark.title %>の編集ページ</h1>
 
-<%= form_for(@bookmark) do %>
+<%= form_for(@bookmark) do |f| %>
 
   <div>
     <%= f.label :title, 'タイトル' %>
@@ -9,7 +9,7 @@
   
   <div>
     <%= f.label :url, 'URL' %>
-    <%= f.text_field :email %>
+    <%= f.text_field :url %>
   </div>
   
   <div>

@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     redirect_to users_path
@@ -20,6 +20,12 @@ class BookmarksController < ApplicationController
   end
   
   def update
+    @bookmark = Bookmark.find(params[:id])
+    if @bookmark.update(bookmark_params)
+      redirect_to user_path
+    else
+      render :edit
+    end
   end
 
   def destroy
