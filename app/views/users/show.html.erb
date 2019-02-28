@@ -2,16 +2,37 @@
 
 <% if current_user.id == @user.id %>
   <div><%= link_to 'ユーザー情報の編集', edit_user_path(@user) %></div>
-  </div><%= link_to 'ログアウト', logout_path, method: :delete %></div>
-
+  <div><%= link_to 'ログアウト', logout_path, method: :delete %></div>
+  
+  <h2>ブックマークを登録する</h2>
+  <%= form_for(@bookmark) do |f| %>
+    
+    <div>
+      <%= f.label :title, 'タイトル' %>
+      <%= f.text_field :title %>
+    </div>
+    
+    <div>
+      <%= f.label :url, 'URL' %>
+      <%= f.text_field :url %>
+    </div>
+    
+    <%= f.submit '登録' %>
+  <% end %>
+  
 <% end %>
 
 <h2><%= @user.name %>のブックマーク</h2>
 
-
-<ul>
-  <li>title:URL</li>
-</ul>
-
+<% @bookmarks.each do |bookmark| %>
+  <ul>
+    <li>
+      <%= bookmark.title %>：<%= link_to bookmark.url, bookmark.url %>／
+      <% if current_user == @user %>
+        <%= link_to '削除', bookmark, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
 <%= link_to 'ユーザー一覧ページへ', users_path %>
 <footer><small><%= link_to 'トップページへ', root_url %></small></footer>

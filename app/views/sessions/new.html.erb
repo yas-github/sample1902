@@ -1,4 +1,5 @@
-<h1>ログインページ</h1>
+<h1>ログイン</h1>
+
 <%= form_for(:session) do |f| %>
 
   <div>
@@ -6,12 +7,14 @@
     <%= f.email_field :email %>
   </div>
   
-  <div>  
-    <%= f.label :password, 'Password' %>
+  <div>
+    <%= f.label :password, 'パスワード' %>
     <%= f.password_field :password %>
   </div>
-
-  <%= f.submit 'ログイン' %>
+  
+  <div>
+    <%= f.submit 'ログイン' %>
+  </div>
 <% end %>
 
-<footer><small><%= link_to 'トップページへ', root_url %></small></footer>
+<%= link_to 'ユーザー登録へ', signup_path %>

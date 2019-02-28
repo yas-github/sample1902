@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @bookmark = @user.bookmarks.build
+    @bookmarks = @user.bookmarks
   end
 
   def new
@@ -28,8 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    
+    @user = User.find(session[:user_id])
     if @user.update(user_params)
       redirect_to @user
     else
@@ -49,4 +50,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+  
 end

@@ -16,7 +16,7 @@
   </div>
   
   <div>
-    <%= link_to 'アカウントの削除', @user ,method: :delete %>
+    <%= link_to 'アカウントの削除', @user ,method: :delete, data: { confirm: "本当に削除しますか？" } %>
   </div>
   <footer><%= link_to 'マイページへ', user_path %></footer>
 <% end %>
