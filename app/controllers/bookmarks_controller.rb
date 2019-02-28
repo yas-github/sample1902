@@ -2,6 +2,10 @@ class BookmarksController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def index
+    redirect_to users_path
+  end
+  
   def create
     @bookmark = current_user.bookmarks.build(bookmark_params)
     if @bookmark.save

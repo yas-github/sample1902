@@ -1,1 +1,18 @@
-<%= @bookmark.titleの編集ページ %>
+<%= @bookmarkの編集ページ %>
+
+<%= form_for(@bookmark) do %>
+
+  <div>
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div>
+    <%= f.label :url, 'URL' %>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div>
+    <%= f.submit '保存' %>
+  </div>
+<% end %>
