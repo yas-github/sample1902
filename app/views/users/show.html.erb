@@ -3,23 +3,23 @@
 <% if current_user.id == @user.id %>
   <div><%= link_to 'ユーザー情報の編集', edit_user_path(@user) %></div>
   <div><%= link_to 'ログアウト', logout_path, method: :delete %></div>
-  
+
   <h2>ブックマークを登録する</h2>
   <%= form_for(@bookmark) do |f| %>
-    
+
     <div>
       <%= f.label :title, 'タイトル' %>
       <%= f.text_field :title %>
     </div>
-    
+
     <div>
       <%= f.label :url, 'URL' %>
       <%= f.text_field :url %>
     </div>
-    
+
     <%= f.submit '登録' %>
   <% end %>
-  
+
 <% end %>
 
 <h2><%= @user.name %>のブックマーク</h2>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
-  
+
   def index
     @users = User.all
   end
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @bookmark = @user.bookmarks.build
-    @bookmarks = @user.bookmarks
+    @bookmarks = @user.bookmarks.all
   end
 
   def new
@@ -17,14 +17,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+
     if @user.save
+      @user.authenticate(user_params[:password])
+      session[:user_id] = @user.id
       redirect_to @user
     else
       render :new
     end
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-      
+
   end
 
   def destroy
@@ -44,11 +46,11 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to root_url
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
 end
